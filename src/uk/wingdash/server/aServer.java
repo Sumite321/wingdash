@@ -14,11 +14,13 @@ import java.util.HashMap;
 public class aServer {
 
 	public static HashMap<String,Socket> users = new HashMap<>();
-	
+
+	private static final int PORT = 9898;
+
     public static void main(String[] args) throws Exception {
         System.out.println("The  server is running.");
         int clientNumber = 1;
-        ServerSocket listener = new ServerSocket(9898);
+        ServerSocket listener = new ServerSocket(PORT);
         Socket connection;
         try {
             while (true) {
@@ -33,6 +35,11 @@ public class aServer {
             listener.close();
             
         }
+    }
+
+    private boolean checkForValue(){
+
+        return false;
     }
 
     
