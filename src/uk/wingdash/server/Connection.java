@@ -72,7 +72,7 @@ public class Connection extends Thread {
         System.out.println(message);
     }
 
-    private HashMap<String, Socket> getUsers() {
+     HashMap<String, Socket> getUsers() {
 
         return aServer.users;
     }
