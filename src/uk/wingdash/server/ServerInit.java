@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class aServer {
+public class ServerInit {
 
 	public static HashMap<String,Socket> users = new HashMap<>();
 

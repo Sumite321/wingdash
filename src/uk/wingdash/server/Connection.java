@@ -2,7 +2,6 @@ package uk.wingdash.server;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 
 public class Connection extends Thread {
@@ -74,7 +73,7 @@ public class Connection extends Thread {
 
     private HashMap<String, Socket> getUsers() {
 
-        return aServer.users;
+        return ServerInit.users;
     }
 
     private void connectTo(int clientNumber) {

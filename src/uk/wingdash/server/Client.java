@@ -2,12 +2,12 @@ package uk.wingdash.server;
 
 import java.net.Socket;
 
-public class ServerClient {
+public class Client {
 
 	private int clientNumber = 0;
 	Socket socket = null;
 	
-	private ServerClient(int clientNumber, Socket socket) {
+	private Client(int clientNumber, Socket socket) {
 		
 		this.clientNumber = clientNumber;
 		this.socket = socket;
