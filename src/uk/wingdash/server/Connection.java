@@ -18,38 +18,37 @@ public class Connection extends Thread {
     public void run() {
         try {
 
+
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
             out.println("Hello, you are client #" + clientNumber + ".");
+            out.println(HTMLCode.SUCCESS.toString());
             out.println("Enter a line with only a period to quit\n");
 
-            while (true) {
-                String input = in.readLine();
-
-                if (input.equals("avai")) {
-
-                    String connected = " ";
-
-                    for (Socket user : getUsers().values()) {
-
-                        connected += user.getInetAddress().getHostName();
-
-                    }
-                    out.println(connected);
-                } else if (input.contains("connect")) {
-
-                    connectTo(2);
-
-                    out.println("mf");
-
-
-                } else {
-                    out.println(input);
-                }
-
-
-            }
+//            while (true) {
+//                String input = in.readLine();
+//
+//                if (input.equals("avai")) {
+//
+//                    String connected = " ";
+//
+//                    for (Socket user : getUsers().values()) {
+//
+//                        connected += user.getInetAddress().getHostName();
+//
+//                    }
+//                    out.println(connected);
+//                } else if (input.contains("connect")) {
+//
+//                    connectTo(2);
+//
+//                    out.println("mf");
+//
+//
+//                } else {
+//                    out.println(input);
+//                }
         } catch (IOException e) {
             log("Error handling client# " + clientNumber + ": " + e);
         } catch (NullPointerException n) {
@@ -76,6 +75,7 @@ public class Connection extends Thread {
         return ServerInit.users;
     }
 
+    
     private void connectTo(int clientNumber) {
 
         try {
