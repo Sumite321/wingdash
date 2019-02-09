@@ -16,10 +16,12 @@ public class Connection extends Thread {
         log("Connected client # " + clientNumber + " at " + socket);
     }
 
+    /*
+    thread in charge of handling main [tasks,interactions] with client
+     */
     public void run() {
         try {
-
-
+            
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -27,29 +29,6 @@ public class Connection extends Thread {
 
             out.println("Enter a line with only a period to quit\n");
 
-//            while (true) {
-//                String input = in.readLine();
-//
-//                if (input.equals("avai")) {
-//
-//                    String connected = " ";
-//
-//                    for (Socket user : getUsers().values()) {
-//
-//                        connected += user.getInetAddress().getHostName();
-//
-//                    }
-//                    out.println(connected);
-//                } else if (input.contains("connect")) {
-//
-//                    connectTo(2);
-//
-//                    out.println("mf");
-//
-//
-//                } else {
-//                    out.println(input);
-//                }
         } catch (IOException e) {
             log("Error handling client# " + clientNumber + ": " + e);
         } catch (NullPointerException n) {
@@ -76,7 +55,9 @@ public class Connection extends Thread {
         return ServerInit.users;
     }
 
-
+    /*
+    possible part of handshake between two clients, to be changed to handshake.java
+     */
     private void connectTo(int clientNumber) {
 
         try {
