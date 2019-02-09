@@ -2,6 +2,7 @@ package uk.wingdash.server;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Connection extends Thread {
@@ -23,7 +24,7 @@ public class Connection extends Thread {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             out.println("Hello, you are client #" + clientNumber + ".");
-            out.println(HTMLCode.SUCCESS.toString());
+
             out.println("Enter a line with only a period to quit\n");
 
 //            while (true) {
@@ -70,17 +71,17 @@ public class Connection extends Thread {
         System.out.println(message);
     }
 
-    private HashMap<String, Socket> getUsers() {
+    private HashMap<String,Client> getUsers() {
 
         return ServerInit.users;
     }
 
-    
+
     private void connectTo(int clientNumber) {
 
         try {
             // get the socket that needs connection
-            Socket user = getUsers().get(String.valueOf(2));
+            Socket user = getUsers().get(String.valueOf(2)).getSocket();
 
             // the outstream of the socket
             PrintWriter outStream = new PrintWriter(user.getOutputStream(), true);
