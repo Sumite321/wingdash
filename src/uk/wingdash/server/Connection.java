@@ -9,6 +9,7 @@ public class Connection extends Thread {
     private Socket socket;
     private int clientNumber;
     private PrintWriter out;
+    private Client _userToConnect = null;
 
     public Connection(Socket socket, int clientNumber) {
         this.socket = socket;
@@ -21,7 +22,7 @@ public class Connection extends Thread {
      */
     public void run() {
         try {
-            
+
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -46,6 +47,18 @@ public class Connection extends Thread {
         }
     }
 
+    private boolean connectToOtherUser(){
+
+        Handshake performHandshakeCheck = new Handshake();
+
+        // get the socket that needs connection
+        _userToConnect = getUsers().get(String.valueOf(2));
+        if(performHandshakeCheck.connectTo(_userToConnect)){
+            return true;
+        }
+        return false;
+    }
+
     private void log(String message) {
         System.out.println(message);
     }
@@ -54,29 +67,4 @@ public class Connection extends Thread {
 
         return ServerInit.users;
     }
-
-    /*
-    possible part of handshake between two clients, to be changed to handshake.java
-     */
-    private void connectTo(int clientNumber) {
-
-        try {
-            // get the socket that needs connection
-            Socket user = getUsers().get(String.valueOf(2)).getSocket();
-
-            // the outstream of the socket
-            PrintWriter outStream = new PrintWriter(user.getOutputStream(), true);
-
-            // check if connected with no errors
-            if (!outStream.checkError()) {
-                log("A connected to B");
-            }
-
-            outStream.println("YouReachedMe");
-        } catch (IOException e) {
-            log("Unable to reach client");
-        }
-    }
-
-
 }
