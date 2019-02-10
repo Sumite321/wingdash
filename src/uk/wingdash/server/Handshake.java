@@ -14,7 +14,7 @@ public class Handshake {
     public void Handshake(){
     }
 
-    public boolean connectTo(Client destination) {
+    public boolean attemptConnection(Client destination) {
 
         try {
 
@@ -24,14 +24,21 @@ public class Handshake {
             // check if connected with no errors
             if (!outStream.checkError()) {
                 HTMLCode.SUCCESS.toString();
+                outStream.println(HTMLCode.SUCCESS.toString());
             }
 
-            outStream.println("YouReachedMe");
+
             return true;
         } catch (IOException e) {
             HTMLCode.FAILED.toString();
         }
 
         return false;
+    }
+
+    public void readHandshake(){
+
+
+
     }
 }

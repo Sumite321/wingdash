@@ -53,7 +53,7 @@ public class Connection extends Thread {
 
         // get the socket that needs connection
         _userToConnect = getUsers().get(String.valueOf(2));
-        if(performHandshakeCheck.connectTo(_userToConnect)){
+        if(performHandshakeCheck.attemptConnection(_userToConnect)){
             return true;
         }
         return false;
