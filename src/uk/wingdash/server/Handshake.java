@@ -1,15 +1,14 @@
 package uk.wingdash.server;
 
+import javax.swing.text.html.HTML;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Handshake {
 
-        /*
-    possible part of handshake between two clients, to be changed to handshake.java
-     */
-
+    private String[] packet= new String[2];
+    private String _AUTH = "58a6sd*&^7y&T£";
 
     public void Handshake(){
     }
@@ -24,7 +23,9 @@ public class Handshake {
             // check if connected with no errors
             if (!outStream.checkError()) {
                 HTMLCode.SUCCESS.toString();
-                outStream.println(HTMLCode.SUCCESS.toString());
+                packet[0] = HTMLCode.SUCCESS.toString();
+                packet[1] = _AUTH;
+                outStream.println(packet);
             }
 
 
@@ -36,9 +37,10 @@ public class Handshake {
         return false;
     }
 
-    public void readHandshake(){
-
-
+    public boolean authoriseHandshake(String[] packet){
+        //decode the code
+        
+        return packet[1] == _AUTH;
 
     }
 }

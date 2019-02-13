@@ -10,6 +10,7 @@ public class Client {
 	private String STATUS;
 	private Date __dateTimeConnected;
 	private Date _dateTimeDisconnected;
+	private String _connectedTo;
 	
 	public Client(int clientNumber, Socket socket) {
 		this.clientNumber = clientNumber;
@@ -38,5 +39,29 @@ public class Client {
 
 	public void setSTATUS(String STATUS) {
 		this.STATUS = STATUS;
+	}
+
+	public Date get__dateTimeConnected() {
+		return __dateTimeConnected;
+	}
+
+	public void set__dateTimeConnected(Date __dateTimeConnected) {
+		this.__dateTimeConnected = __dateTimeConnected;
+	}
+
+	public Date get_dateTimeDisconnected() {
+		return _dateTimeDisconnected;
+	}
+
+	public void set_dateTimeDisconnected(Date _dateTimeDisconnected) {
+		this._dateTimeDisconnected = _dateTimeDisconnected;
+	}
+
+	public String get_connectedTo() {
+		return _connectedTo;
+	}
+
+	public void set_connectedTo(String _connectedTo) {
+		this._connectedTo = _connectedTo;
 	}
 }
