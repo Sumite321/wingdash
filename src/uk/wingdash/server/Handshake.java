@@ -39,7 +39,7 @@ public class Handshake {
 
     public boolean authoriseHandshake(String[] packet){
         //decode the code
-        
+
         return packet[1] == _AUTH;
 
     }
